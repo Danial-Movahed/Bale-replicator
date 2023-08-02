@@ -5,11 +5,19 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from time import sleep
 
+proxyhost = "127.0.0.1"
+proxyport = 40000
+
 class WebDriver:
     def __init__(self):
         self.options = webdriver.FirefoxOptions()
+        
         if len(sys.argv) > 1:
             self.options.add_argument('--headless')
+            self.options.set_preference('network.proxy.type', 1)
+            self.options.set_preference('network.proxy.socks', proxyhost)
+            self.options.set_preference('network.proxy.socks_port', proxyport)
+
         self.driver = webdriver.Firefox(options=self.options)
         self.GetUrl("https://web.bale.ai/chat")
         self.Login()
