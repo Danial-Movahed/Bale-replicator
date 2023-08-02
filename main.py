@@ -18,6 +18,7 @@ class WebDriver:
 
         self.driver = webdriver.Chrome(options=self.options)
         self.GetUrl("https://web.bale.ai/chat")
+        sleep(10)
         self.Login()
         sleep(20)
         self.SkipTutorial()
