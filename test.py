@@ -7,6 +7,7 @@ from time import sleep
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 options.add_argument('--proxy-server=socks5://127.0.0.1:40000')
 driver = webdriver.Chrome(options=options)
 driver.get("https://ping.eu")
