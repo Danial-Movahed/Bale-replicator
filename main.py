@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from time import sleep
 
-proxy = "sock5://127.0.0.1:40000"
+proxy = "socks5://127.0.0.1:40000"
 
 class WebDriver:
     def __init__(self):
@@ -19,12 +19,17 @@ class WebDriver:
         self.driver = webdriver.Chrome(options=self.options)
         self.GetUrl("https://web.bale.ai/chat")
         sleep(10)
+        self.AcceptApplication()
+        sleep(1)
         self.Login()
         sleep(20)
         self.SkipTutorial()
         sleep(1)
         self.weeb = self.FindWeeb()
         self.SendMessage(self.weeb, "Dalam weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeb!")
+
+    def AcceptApplication(self):
+        self.driver.execute_script("arguments[0].click()", self.driver.find_element(By.CLASS_NAME, "css-2r2ma7"))
 
     def FindWeeb(self):
         return self.driver.find_element(By.XPATH,"//div[@class='TopBlock_Name__rQZPl' and contains(., 'امیرحسام سجودی')][1]")
