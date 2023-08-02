@@ -21,6 +21,7 @@ class WebDriver:
         sleep(10)
         self.AcceptApplication()
         sleep(1)
+        self.driver.save_screenshot('sample_screenshot_1.png')
         self.Login()
         sleep(20)
         self.SkipTutorial()
