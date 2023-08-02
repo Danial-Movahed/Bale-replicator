@@ -12,7 +12,7 @@ class WebDriver:
         self.options = webdriver.ChromeOptions()
         
         if len(sys.argv) > 1:
-            self.options.add_argument('--headless')
+            self.options.add_argument('--headless=new')
             self.options.add_argument('--no-sandbox')
             self.options.add_argument('--proxy-server='+proxy)
 
